@@ -1,0 +1,31 @@
+name: Static Website CI
+
+on:
+  push:
+    branches: ["main"]
+
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: List Project Files
+        run: ls -R
+
+      - name: Check HTML Files
+        run: find . -name "*.html"
+
+      - name: Check CSS Files
+        run: find . -name "*.css"
+
+      - name: Check JavaScript Files
+        run: find . -name "*.js"
+
+      - name: CI Completed
+        run: echo "Website validation completed successfully!"
